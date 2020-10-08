@@ -19,6 +19,7 @@ public class CountryController {
         return countryRepository.findAll();
     }
 
+
     @GetMapping(path = "{countryId}")
     public Optional<Country> getCountryById(@PathVariable("countryId") Integer id){
         return  countryRepository.findById(id);
