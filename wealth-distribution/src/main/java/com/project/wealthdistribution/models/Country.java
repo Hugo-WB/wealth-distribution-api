@@ -26,6 +26,7 @@ public class Country {
     private String shortName;
     @NotBlank
     private String region;
+    private String region2;
 
     public Integer getId() {
         return id;
@@ -65,5 +66,13 @@ public class Country {
 
     public void setRegion(String region) {
         this.region = region;
+    }
+
+    public String getRegion2() {
+        return region2;
+    }
+
+    public void setRegion2(String region2) {
+        this.region2 = region2;
     }
 }

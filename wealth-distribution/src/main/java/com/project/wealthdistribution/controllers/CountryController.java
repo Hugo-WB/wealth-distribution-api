@@ -1,41 +1,40 @@
 package com.project.wealthdistribution.controllers;
 
-import com.project.wealthdistribution.repositories.CountryRepository;
+import com.project.wealthdistribution.services.CountryDataAccessService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import com.project.wealthdistribution.models.Country;
 
+import java.util.List;
 import java.util.Optional;
 
 @RequestMapping("/countries")
 @RestController
 public class CountryController {
+    private CountryDataAccessService countryDataAccessService;
     @Autowired
-    private CountryRepository countryRepository;
+    public CountryController(CountryDataAccessService countryDataAccessService){
+        this.countryDataAccessService = countryDataAccessService;
+    }
 
     @GetMapping
     public @ResponseBody Iterable<Country> getCountries(){
-        return countryRepository.findAll();
+        return countryDataAccessService.getAll();
     }
 
-
-    @GetMapping(path = "{countryId}")
-    public Optional<Country> getCountryById(@PathVariable("countryId") Integer id){
-        return  countryRepository.findById(id);
+    @GetMapping(path="/region/{region}")
+    public List<Country> getCountriesByRegion(@PathVariable("region") String region){
+        return countryDataAccessService.getCountriesByRegion(region);
     }
+
     @PostMapping
     public @ResponseBody String addNewCountry(@RequestBody Country country){
-        countryRepository.save(country);
-        return "Saved";
+        return countryDataAccessService.save(country);
     }
-
-
-    @PutMapping
 
     @DeleteMapping(path="{countryId}")
     public void deleteCountryById(@PathVariable("countryId") Integer id){
-        countryRepository.deleteById(id);
+        countryDataAccessService.deleteCountryById(id);
     }
-
+    
 }
