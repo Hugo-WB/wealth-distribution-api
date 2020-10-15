@@ -15,10 +15,11 @@ public class DataPoint {
     private Integer id;
 
     @NotNull
-    private Integer countryId;
+    private Integer countryCode;
     private Integer year;
+    
     @ElementCollection
-    private List<Integer> percentiles;
+    private List<Integer> quartilesPercentages;
 
     public Integer getId() {
         return id;
@@ -28,12 +29,12 @@ public class DataPoint {
         this.id = id;
     }
 
-    public Integer getCountryId() {
-        return countryId;
+    public Integer getCountryCode() {
+        return countryCode;
     }
 
-    public void setCountryId(Integer countryId) {
-        this.countryId = countryId;
+    public void setCountryId(Integer countryCode) {
+        this.countryCode = countryCode;
     }
 
     public Integer getYear() {
@@ -44,11 +45,11 @@ public class DataPoint {
         this.year = year;
     }
 
-    public List<Integer> getPercentiles() {
-        return percentiles;
+    public List<Integer> getQuartilesPercentages() {
+        return this.quartilesPercentages;
     }
 
-    public void setPercentiles(List<Integer> percentiles) {
-        this.percentiles = percentiles;
+    public void setQuartilesPercentages(List<Integer> percentiles) {
+        this.quartilesPercentages = percentiles;
     }
 }
