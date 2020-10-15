@@ -13,6 +13,7 @@ import javax.validation.constraints.NotNull;
 import java.util.UUID;
 @Entity
 @Table(name="countries")
+
 public class Country {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,7 +25,6 @@ public class Country {
     private String name;
     @NotBlank
     private String shortName;
-    @NotBlank
     private String region;
     private String region2;
 
@@ -75,4 +75,5 @@ public class Country {
     public void setRegion2(String region2) {
         this.region2 = region2;
     }
+
 }

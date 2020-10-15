@@ -21,9 +21,8 @@ public class CountryDataAccessService {
         return countryRepository.findAll();
     }
 
-    public String save(Country country){
-        countryRepository.save(country);
-        return "Saved";
+    public Country save(Country country){
+        return countryRepository.save(country);
     }
 
     public List<Country> getCountriesByRegion(String region){

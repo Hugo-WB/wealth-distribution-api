@@ -28,7 +28,7 @@ public class CountryController {
     }
 
     @PostMapping
-    public @ResponseBody String addNewCountry(@RequestBody Country country){
+    public @ResponseBody Country addNewCountry(@RequestBody Country country){
         return countryDataAccessService.save(country);
     }
 
