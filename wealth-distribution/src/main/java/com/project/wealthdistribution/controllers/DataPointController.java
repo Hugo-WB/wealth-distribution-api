@@ -27,14 +27,20 @@ public class DataPointController{
         return dataPointService.getByCountryCode(countryCode);
     }
 
-    @PostMapping
-    public @ResponseBody Country addNewCountry(@RequestBody Country country){
-        return countryDataAccessService.save(country);
-    }
+     @PostMapping
+     public @ResponseBody String addNewDataPoint(@RequestBody DataPoint dataPoint){
+         return dataPointService.save(dataPoint);
+     }
 
-    @DeleteMapping(path="{countryId}")
-    public void deleteCountryById(@PathVariable("countryId") Integer id){
-        countryDataAccessService.deleteCountryById(id);
-    }
+     @PutMapping(path="/{dataId}")
+    public @ResponseBody String changeDataPoint(@PathVariable("dataId") Integer dataId,
+                                                @RequestBody DataPoint dataPoint){
+        return dataPointService.change(dataId,dataPoint);
+     }
+
+    // @DeleteMapping(path="{countryId}")
+    // public void deleteCountryById(@PathVariable("countryId") Integer id){
+    //     countryDataAccessService.deleteCountryById(id);
+    // }
     
 }

@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface CountryRepository extends JpaRepository<Country,Integer> {
 
-    Country findByRegion(String region);
+    List<Country> findByRegion(String region);
 
 }
